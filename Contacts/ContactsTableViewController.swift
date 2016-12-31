@@ -8,9 +8,9 @@
 
 import UIKit
 
-class ContactsTableViewConroller: UITableViewController {
+
+class ContactsTableViewController: UITableViewController {
     
-    class ContactsTableViewController: UITableViewController {
         var contacts:[Contact] = []
     
     override func viewDidLoad() {
@@ -107,4 +107,4 @@ class ContactsTableViewConroller: UITableViewController {
      */
     
 }
-}
+
