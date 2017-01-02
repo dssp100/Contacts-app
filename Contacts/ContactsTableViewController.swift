@@ -16,6 +16,10 @@ class ContactsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(ContactsTableViewController.addContact))
+        navigationItem.rightBarButtonItem = addButton
+        
+        
        self.navigationItem.leftBarButtonItem = self.editButtonItem;
         
         func toggleEdit() {
@@ -115,7 +119,17 @@ override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: Index
         let destination = segue.destination as! DetailViewController
         destination.contact = contact
      }
- 
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
+    func addContact() {
+        let newContact = Contact(name: "New Contact")
+        self.contacts.append(newContact)
+        let newIndexPath = IndexPath(row: self.contacts.count - 1, section: 0)
+        self.tableView.insertRows(at: [newIndexPath], with: .automatic)
+    }
 }
 
